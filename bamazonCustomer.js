@@ -18,15 +18,14 @@ connection.connect(function (err) {
 function start() {
     connection.query("SELECT id, product_name, price, stock_quantity FROM products", function (err, results) {
         if (err) throw err;
-        for (let i = 0; i < results.length; i++) {
-            let table = new Table({
+        let table = new Table({
                 head: ['Item ID', 'Product Name', 'Price', 'Remaining Stock'],
                 colWidths: [10, 40, 10, 18]
             });
-            table.push([results[i].id, results[i].product_name, "$" + results[i].price, results[i].stock_quantity]);
-
-            console.log(table.toString());
+        for (let i = 0; i < results.length; i++) {
+            table.push([results[i].id, results[i].product_name, "$" + results[i].price, results[i].stock_quantity]);    
         }
+        console.log(table.toString());
         selectItem();
     });
 }
@@ -82,9 +81,9 @@ function purchaseItem(input) {
                         let selection = answer.amount;
                         let cost = price * selection
                         if (quantity < selection) {
-                            console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                            console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                             console.log(`Insufficient quantity! Only ${results[0].stock_quantity} in stock`);
-                            console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                            console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                             purchaseInquirer();
                         }
                         else if (selection < quantity) {
@@ -110,8 +109,8 @@ function purchaseItem(input) {
                             console.log("~~~~~~~~~~~~~~~~~~~~~~~~~");
                             purchaseItem();
                         }
-            });
-        }
-        purchaseInquirer();
-    })
+                    });
+            }
+            purchaseInquirer();
+        })
 };
