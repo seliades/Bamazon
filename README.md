@@ -1,7 +1,6 @@
 # Bamazon
 
-[Link to Video of Bamazon Customer Application]()
-[Link to Video of Bamazon Manager Application]()
+[Link to Video Demo of Bamazon Customer and Manager Applications](https://drive.google.com/open?id=1fbYXprC4fgomkRqtA23X-TrOLBd8th6C)
 
 ## Description
 This Bamazon Node application is a digital marketplace that runs through the command line and utlizes JavaScript and several Node modules. You will see a table with the available items in the marketplace and their prices. There are multiple .js files, and you will choose one based upon how you are trying to access the market place. 
